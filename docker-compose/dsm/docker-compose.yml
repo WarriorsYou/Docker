@@ -1,0 +1,20 @@
+version: "3"
+services:
+  dsm:
+    container_name: dsm
+    image: vdsm/virtual-dsm:latest
+    environment:
+      DISK_SIZE: "1024G"
+      CPU_CORES: "4"
+      RAM_SIZE: "2048M"
+    devices:
+      - /dev/kvm
+      - /dev/vhost-net
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 5005:5000
+    volumes:
+      - /share/DSM:/storage
+    restart: on-failure
+    stop_grace_period: 1m

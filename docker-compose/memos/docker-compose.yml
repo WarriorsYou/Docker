@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+    memos:
+        image: 'elestio/memos:latest'
+        container_name: memos
+        network_mode: host
+        restart: always
+        ports:
+            - '5230:5230'
+        volumes:
+            - '/share/docker/memos/:/var/opt/memos'

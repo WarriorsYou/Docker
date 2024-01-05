@@ -1,0 +1,18 @@
+version: "2.1"
+services:
+  emby:
+    image: lscr.io/linuxserver/emby:latest
+    container_name: emby-xiaoya
+    network_mode: bridge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+    volumes:
+      - /share/docker/emby_xiaoya/config:/config
+      - /share/docker/emby_xiaoya/xiaoya:/media
+    ports:
+      - 8098:8096
+    devices:
+      - /dev/dri:/dev/dri 
+    restart: unless-stopped
